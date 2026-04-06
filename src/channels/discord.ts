@@ -16,6 +16,13 @@ import {
   OnInboundMessage,
   RegisteredGroup,
 } from '../types.js';
+import { convertMarkdownTables } from '../discord-table.js';
+
+export interface DiscordChannelOpts {
+  onMessage: OnInboundMessage;
+  onChatMetadata: OnChatMetadata;
+  registeredGroups: () => Record<string, RegisteredGroup>;
+}
 
 export interface DiscordChannelOpts {
   onMessage: OnInboundMessage;
@@ -207,13 +214,16 @@ export class DiscordChannel implements Channel {
 
       const textChannel = channel as TextChannel;
 
+      // Convert Markdown tables → ASCII art for Discord rendering
+      const formatted = convertMarkdownTables(text);
+
       // Discord has a 2000 character limit per message — split if needed
       const MAX_LENGTH = 2000;
-      if (text.length <= MAX_LENGTH) {
-        await textChannel.send(text);
+      if (formatted.length <= MAX_LENGTH) {
+        await textChannel.send(formatted);
       } else {
-        for (let i = 0; i < text.length; i += MAX_LENGTH) {
-          await textChannel.send(text.slice(i, i + MAX_LENGTH));
+        for (let i = 0; i < formatted.length; i += MAX_LENGTH) {
+          await textChannel.send(formatted.slice(i, i + MAX_LENGTH));
         }
       }
       logger.info({ jid, length: text.length }, 'Discord message sent');
