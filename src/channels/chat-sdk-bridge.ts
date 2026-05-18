@@ -74,6 +74,12 @@ export interface ChatSdkBridgeConfig {
    * and reactions still target the head of the reply.
    */
   maxTextLength?: number;
+  /**
+   * Forward ALL messages in unsubscribed threads, not just @-mentions.
+   * Use for platforms where the bot identity can't be @-mentioned (e.g.
+   * Linear OAuth apps). The thread is auto-subscribed on first message.
+   */
+  catchAll?: boolean;
 }
 
 /**
@@ -234,6 +240,16 @@ export function createChatSdkBridge(config: ChatSdkBridgeConfig): ChannelAdapter
         const channelId = adapter.channelIdFromThreadId(thread.id);
         await setupConfig.onInbound(channelId, thread.id, await messageToInbound(message, true, true));
       });
+
+      // Catch-all for platforms where @-mention isn't possible (e.g. Linear
+      // OAuth apps). Forward every unsubscribed message and auto-subscribe.
+      if (config.catchAll) {
+        chat.onNewMessage(/.*/, async (thread, message) => {
+          const channelId = adapter.channelIdFromThreadId(thread.id);
+          await setupConfig.onInbound(channelId, thread.id, await messageToInbound(message, false, true));
+          await thread.subscribe();
+        });
+      }
 
       // DMs — by definition addressed to the bot. Thread id flows through
       // so sub-thread context reaches delivery (Slack users can open threads
