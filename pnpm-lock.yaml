@@ -4,6 +4,10 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  chat: 4.26.0
+  '@chat-adapter/shared': 4.26.0
+
 importers:
 
   .:
@@ -36,8 +40,8 @@ importers:
         specifier: ^4.24.0
         version: 4.26.0
       '@chat-adapter/telegram':
-        specifier: 4.26.0
-        version: 4.26.0
+        specifier: 4.27.0
+        version: 4.27.0
       '@chat-adapter/whatsapp':
         specifier: ^4.24.0
         version: 4.26.0
@@ -63,7 +67,7 @@ importers:
         specifier: 11.10.0
         version: 11.10.0
       chat:
-        specifier: ^4.26.0
+        specifier: 4.26.0
         version: 4.26.0
       chat-adapter-imessage:
         specifier: ^0.1.1
@@ -142,7 +146,7 @@ packages:
   '@bitbasti/chat-adapter-webex@0.1.0':
     resolution: {integrity: sha512-Cl/gy3ifh18y0fs4f/qVNmHXfn+3v40x6QUjOUGZ5mEds2zYiqeVAalRkL+feBdjEz1tE8aQtzf1OUhRGPQeFw==}
     peerDependencies:
-      chat: ^4.15.0
+      chat: 4.26.0
 
   '@borewit/text-codec@0.2.2':
     resolution: {integrity: sha512-DDaRehssg1aNrH4+2hnj1B7vnUGEjU6OIlyRdkMd0aUdIUvKXrJfXsy8LVtXAy7DRvYVluWbMspsRhz2lcW0mQ==}
@@ -184,8 +188,8 @@ packages:
   '@chat-adapter/teams@4.26.0':
     resolution: {integrity: sha512-Hg7TzN7Y/G/PcJr7VWKnv26XBDjP8+KDoe1gp62BAN7Y2MXCPdhsZLSR3cWQ5AH7nw0oz3vPZ38UilWUIhCxFg==}
 
-  '@chat-adapter/telegram@4.26.0':
-    resolution: {integrity: sha512-PE2HoCQ4648VNKZTuHFanQNoYzM/niNoSbDyYlPq6VOoB5qsoo1ctR8TERyl1EfPBNexWZpSWYrrnQPr15LUfA==}
+  '@chat-adapter/telegram@4.27.0':
+    resolution: {integrity: sha512-taRZAPw5Sw7G4BtsGCIV5QqaXrKUlmLWoX04NZxGUC0Gn7MuYPwh7P7wMk04LvQ2lZfhjVCr22UlvayloUPSfg==}
 
   '@chat-adapter/whatsapp@4.26.0':
     resolution: {integrity: sha512-4wfWUjIMZRsbKLonQc+U2rIAaG5wDr8agpDmltaUVoHwwRUhnRuf2TX3PpfjJD8qLeHYdY9e7s9f+L4h5IRiuw==}
@@ -1013,8 +1017,8 @@ packages:
     resolution: {integrity: sha512-8rGteBhvmIOU38zUun6Jwfgw3hfxKmyhvz329lJ6XIKidHy9wTWMoV9DpuR6typiiKhNnSZeDEB6/3kE3S2J3A==}
     engines: {node: '>=18'}
     peerDependencies:
-      '@chat-adapter/shared': ^4.15.0
-      chat: ^4.15.0
+      '@chat-adapter/shared': 4.26.0
+      chat: 4.26.0
 
   '@rolldown/binding-android-arm64@1.0.0-rc.15':
     resolution: {integrity: sha512-YYe6aWruPZDtHNpwu7+qAHEMbQ/yRl6atqb/AhznLTnD3UY99Q1jE7ihLSahNWkF4EqRPVC4SiR4O0UkLK02tA==}
@@ -1521,7 +1525,7 @@ packages:
   chat-adapter-imessage@0.1.1:
     resolution: {integrity: sha512-Lq4FZqvV8QnwtD3CVUPF56L6J4aIEaOY08+uuSWBsxKKtTBH/rbJltJiiz2QRGvvWRyuBsjJ0RzXn4kiDG0LaQ==}
     peerDependencies:
-      chat: ^4.14.0
+      chat: 4.26.0
 
   chat@4.26.0:
     resolution: {integrity: sha512-QToDnIEGpyb8yQA6YLMHOSRK30YVk4RtsyFyuWFYyB2c4jQlyIrSWtwVK7qyvmvqzQp9uDwCdJRAhS8GtCHAGQ==}
@@ -3473,7 +3477,7 @@ snapshots:
       - debug
       - supports-color
 
-  '@chat-adapter/telegram@4.26.0':
+  '@chat-adapter/telegram@4.27.0':
     dependencies:
       '@chat-adapter/shared': 4.26.0
       chat: 4.26.0
